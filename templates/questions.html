@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Питання {{ number_quest }}
+{% endblock %}
+{% block text %}
+<form method="post">
+{% csrf_token %}
+    {{ quest.text }}
+    <hr>
+    <br>
+    {% if quest.type_quest == 'OneChoise' %}
+        {% for answer in quest.answers.all %}
+            <label for="answer">{{  answer.answer }}</label>
+            <input type="radio" id="answer" name="answer" value="{{  answer.answer }}" required>
+            <br>
+        {% endfor %}
+    {% elif quest.type_quest == 'TextFild' %}
+        <input type="text" name="answer" required>
+        <br>
+    {% endif %}
+    <input type="hidden" name="quest" value="{{ number_quest }}">
+    <input type="submit">
+</form>
+{% endblock %}
+{% block image %}
+        <img src="{{ quest.get_image }}" alt="">
+{% endblock %}

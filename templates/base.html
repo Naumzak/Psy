@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="Bodo - Simple One Page Personal" name="description">
+    <meta content="BdgPixel" name="author">
+    <!--Fav-->
+    <link href="images/favicon.ico" rel="shortcut icon">
+    
+    <!--styles-->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'css/owl.theme.css' %}" rel="stylesheet">
+    <link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    
+    <!--fonts google-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+
+        <!--WORK-->
+        <section class="grey-bg mar-tm-10" id="work" style="height: 100%">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-5">
+                <h3 class="title-small">
+                  <span>
+                      {% block title %}
+                      {% endblock %}
+                  </span>
+                </h3>
+                <p class="content-detail">
+                    {% block text %}
+                    {% endblock %}
+                </p>
+              </div>
+              <div class="col-md-7 content-right">
+                <!--PORTFOLIO IMAGE-->
+                <ul class="portfolio-image">
+                    {% block image %}
+                    {% endblock %}
+                </ul>
+                <!--/.PORTFOLIO IMAGE END-->
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--/.WORK END-->
+  </body>
+</html>
