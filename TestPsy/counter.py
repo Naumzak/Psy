@@ -23,6 +23,8 @@ class Counter:
                     answer14=self.data['answer14'],
                     answer15=self.data['answer15'],
                     answer16=self.data['answer16'],
+                    answer17=self.data['answer17'],
+                    answer18=self.data['answer18'],
                     sex=self.data['sex'],
                     age=self.data['age'],
                     education=self.data['education'],

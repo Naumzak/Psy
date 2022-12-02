@@ -37,7 +37,16 @@ def questions(request):
             context = {'number_quest': number_quest, 'quest': quest, 'zlist': zlist}
             return render(request, 'questions.html', context=context)
         else:
-            request.session['data'][f'answer{str(number_quest - 1)}'] = request.POST.get('answer')
+            answer = request.POST.get('answer')
+            if answer:
+                request.session['data'][f'answer{str(number_quest - 1)}'] = answer
+            else:
+                answer_list = []
+                for key, value in request.POST.items():
+                    if 'answer' in key:
+                        answer_list.append(value)
+                answer = ', '.join(answer_list)
+                request.session['data'][f'answer{str(number_quest - 1)}'] = answer
             request.session.modified = True
             return redirect('final')
     pass
