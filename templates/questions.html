@@ -30,7 +30,7 @@
     </form>
 {% endblock %}
 {% block image %}
-    <img src="" alt="" id="testimg">
+    <img src="{{ quest.get_image }}" alt="" id="testimg">
     {% if quest.get_image %}
         <div id="timer"></div>
         <div id="example" style=" display: none; ">

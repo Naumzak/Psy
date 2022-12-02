@@ -56,8 +56,8 @@ class Quests(models.Model):
     text = models.CharField(max_length=1000)
     type_quest = models.CharField(max_length=50)
     answers = models.ManyToManyField(Answers, blank=True, )
-    right_answer = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='img/', blank=True, null=True)
+    right_answer = models.CharField(max_length=50, default='')
+    image = models.CharField(max_length=200)
     timer = models.BooleanField()
     timer_time = models.PositiveIntegerField(blank=True, null=True)
     number = models.PositiveIntegerField(unique=True)
@@ -65,7 +65,7 @@ class Quests(models.Model):
 
     def get_image(self):
         try:
-            return self.image.url
+            return self.image
         except:
             return None
 
