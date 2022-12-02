@@ -1,28 +1,40 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-    Питання {{ number_quest }}
+    Питання {{ number_quest }} із 18
 {% endblock %}
 {% block text %}
-<form method="post">
-{% csrf_token %}
-    {{ quest.text }}
-    <hr>
-    <br>
-    {% if quest.type_quest == 'OneChoise' %}
-        {% for answer in quest.answers.all %}
-            <label for="answer">{{  answer.answer }}</label>
-            <input type="radio" id="answer" name="answer" value="{{  answer.answer }}" required>
-            <br>
-        {% endfor %}
-    {% elif quest.type_quest == 'TextFild' %}
-        <input type="text" name="answer" required>
+    <form method="post">
+        {% csrf_token %}
+        {{ quest.text }}
+        <hr>
         <br>
-    {% endif %}
-    <input type="hidden" name="quest" value="{{ number_quest }}">
-    <input type="submit">
-</form>
+        {% if quest.type_quest == 'OneChoise' %}
+            {% for answer in quest.answers.all %}
+                <label for="answer">{{ answer.answer }}</label>
+                <input type="radio" id="answer" name="answer" value="{{ answer.answer }}" required>
+                <br>
+            {% endfor %}
+        {% elif quest.type_quest == 'ManyChoise' %}
+            {% for answer, num in zlist %}
+                <label for="answer">{{ answer.answer }}</label>
+                <input type="checkbox" id="answer" name="answer{{ num }}" value="{{ answer.answer }}">
+                {{ num }}
+                <br>
+            {% endfor %}
+        {% elif quest.type_quest == 'TextFild' %}
+            <input type="number" name="answer" required>
+            <br>
+        {% endif %}
+        <input type="hidden" name="quest" value="{{ number_quest }}">
+        <input type="submit">
+    </form>
 {% endblock %}
 {% block image %}
-        <img src="{{ quest.get_image }}" alt="">
+    <img src="{{ quest.get_image }}" alt="" id="testimg">
+    {% if quest.get_image %}
+        <div id="timer"></div>
+        <div id="example" style=" display: none; ">
+        </div>
+    {% endif %}
 {% endblock %}

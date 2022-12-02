@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Test</title>
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
@@ -10,7 +10,7 @@
     <meta content="BdgPixel" name="author">
     <!--Fav-->
     <link href="images/favicon.ico" rel="shortcut icon">
-    
+
     <!--styles-->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
@@ -18,19 +18,19 @@
     <link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
-    
+
     <!--fonts google-->
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
 
-  </head>
-  <body>
+</head>
+<body>
 
-        <!--WORK-->
-        <section class="grey-bg mar-tm-10" id="work" style="height: 100%">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-5">
+<!--WORK-->
+<section class="grey-bg mar-tm-10" id="work" style="height: 100%">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
                 <h3 class="title-small">
                   <span>
                       {% block title %}
@@ -41,18 +41,37 @@
                     {% block text %}
                     {% endblock %}
                 </p>
-              </div>
-              <div class="col-md-7 content-right">
+            </div>
+            <div class="col-md-7 content-right">
                 <!--PORTFOLIO IMAGE-->
                 <ul class="portfolio-image">
                     {% block image %}
                     {% endblock %}
                 </ul>
                 <!--/.PORTFOLIO IMAGE END-->
-              </div>
             </div>
-          </div>
-        </section>
-        <!--/.WORK END-->
-  </body>
+        </div>
+    </div>
+</section>
+<!--/.WORK END-->
+<script>
+setTimeout(function() {
+  document.getElementById('testimg').style.display='none'
+}, 60*1000);
+</script>
+<script>
+    window. onload= function () {
+    var i = 60;
+    var timer = setInterval(function () {
+        i--;
+        document.getElementById('timer').innerHTML = 'Залишилося: ' + i;
+        if (i == 0) {
+            document.getElementById('example').style.display = 'block';
+            document.getElementById('timer').style.display = 'none';
+            clearInterval(timer);
+        }
+    }, 1000)
+}
+</script>
+</body>
 </html>

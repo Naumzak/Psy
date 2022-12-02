@@ -12,7 +12,7 @@ def main(request):
 def questions(request):
     if request.method == "POST":
         number_quest = int(request.POST.get('quest')) + 1
-        if number_quest <= 16:
+        if number_quest <= len(Quests.objects.all()):
             if number_quest == 1:
                 request.session['data'] = {}
                 request.session['data']['age'] = request.POST.get('age')
@@ -21,10 +21,20 @@ def questions(request):
                 request.session['data']['work'] = request.POST.get('work')
                 request.session.modified = True
             else:
-                request.session['data'][f'answer{str(number_quest - 1)}'] = request.POST.get('answer')
+                answer = request.POST.get('answer')
+                if answer:
+                    request.session['data'][f'answer{str(number_quest - 1)}'] = answer
+                else:
+                    answer_list = []
+                    for key, value in request.POST.items():
+                        if 'answer' in key:
+                            answer_list.append(value)
+                    answer = ', '.join(answer_list)
+                    request.session['data'][f'answer{str(number_quest - 1)}'] = answer
                 request.session.modified = True
             quest = Quests.objects.get(number=number_quest)
-            context = {'number_quest': number_quest, 'quest': quest}
+            zlist = zip(quest.answers.all(), (i for i in range(quest.answers.count())))
+            context = {'number_quest': number_quest, 'quest': quest, 'zlist': zlist}
             return render(request, 'questions.html', context=context)
         else:
             request.session['data'][f'answer{str(number_quest - 1)}'] = request.POST.get('answer')
