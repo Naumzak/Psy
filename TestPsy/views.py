@@ -48,7 +48,7 @@ def final(request):
     data_with_only_answer = [value for key, value in data.items() if 'answer' in key]
     c = Counter(data)
     c.write_in_db()
-    q = Quests.objects.all()
+    q = Quests.objects.order_by('number')
     count = 0
     for answer, right_answer in zip(data_with_only_answer, q):
         if answer == right_answer.right_answer:

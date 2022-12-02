@@ -22,7 +22,7 @@
                 <br>
             {% endfor %}
         {% elif quest.type_quest == 'TextFild' %}
-            <input type="number" name="answer" required>
+            <input type="number" step="any" name="answer" required>
             <br>
         {% endif %}
         <input type="hidden" name="quest" value="{{ number_quest }}">
