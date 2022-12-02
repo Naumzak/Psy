@@ -6,59 +6,57 @@
 {% block text %}
     <h2>Інструкція</h2>
     <p>
-    Вам буде запропоновано 18 завдань, з різними типами відповідей. У деяких треба буде вписати число, в деяких обрати
-    один чи декілька варіантів.
-    У завданнях з картинками час на виконання 1 хв (буде йти таймер), після чого картинка буде зникати, але відповідь ви
-    вписати все одно зможете.
-    У всіх завданнях не можна використовувати інтернет для пошуку інформації, калькулятор або папір з ручкою - всі
-    завдання треба виконувати в голові.
-    Прохання проходити тест за один раз, не відходячи від комп'ютера/телефона.
+        Вам буде запропоновано 18 завдань із різними типами відповідей. У деяких потрібно ввести число, а в деяких
+        вибрати один або кілька варіантів. У завданнях з картинками час виконання — 1 хвилина (буде таймер), після чого
+        картинка пропаде, але відповідь все одно можна буде ввести. У всіх завданнях не можна використовувати інтернет
+        для пошуку інформації, калькулятор або папір з ручкою — всі завдання потрібно виконувати в голові. Будь ласка,
+        проходьте тест за один раз, не відходячи від комп'ютера/телефону.
     </p>
 {% endblock %}
 {% block image %}
     <div style="margin-top: 100px">
-    <h2>Загальна інформація</h2>
-    <form action="{% url "questions" %}" method="post">
-        {% csrf_token %}
-        <div>
-            <label for="age">Вік</label>
-            <input type="number" id="age" name="age" required>
-        </div>
-        <br>
-        <div>
-            <label>Ваша стать:</label>
+        <h2>Загальна інформація</h2>
+        <form action="{% url "questions" %}" method="post">
+            {% csrf_token %}
+            <div>
+                <label for="age">Вік</label>
+                <input type="number" id="age" name="age" required>
+            </div>
             <br>
-            <label for="sex1">Чоловіча</label>
-            <input type="radio" id="sex1" name="sex" value="1" required>
+            <div>
+                <label>Ваша стать:</label>
+                <br>
+                <label for="sex1">Чоловіча</label>
+                <input type="radio" id="sex1" name="sex" value="1" required>
+                <br>
+                <label for="sex2">Жіноча</label>
+                <input type="radio" id="sex2" name="sex" value="2" required>
+            </div>
             <br>
-            <label for="sex2">Жіноча</label>
-            <input type="radio" id="sex2" name="sex" value="2" required>
-        </div>
-        <br>
-        <div>
-            <label>Наявність вищої освіти(чи здобуваєте зараз) :</label>
+            <div>
+                <label>Наявність вищої освіти(чи здобуваєте зараз) :</label>
+                <br>
+                <label for="education1">Так</label>
+                <input type="radio" id="education1" name="education" value="1" required>
+                <br>
+                <label for="education2">Ні</label>
+                <input type="radio" id="education2" name="education" value="2" required>
+            </div>
             <br>
-            <label for="education1">Так</label>
-            <input type="radio" id="education1" name="education" value="1" required>
-            <br>
-            <label for="education2">Ні</label>
-            <input type="radio" id="education2" name="education" value="2" required>
-        </div>
-        <br>
-        <div>
-            <label>Чи працюєте ви за своєю освітою :</label>
-            <br>
-            <label for="work1">Так</label>
-            <input type="radio" id="work1" name="work" value="1" required>
-            <br>
-            <label for="work2">Ні</label>
-            <input type="radio" id="work2" name="work" value="2" required>
-            <br>
-            <label for="work3">Працював/ла, але зараз ні</label>
-            <input type="radio" id="work3" name="work" value="3" required>
-        </div>
-        <input type="hidden" name="quest" value="0">
-        <input type="submit" value="Почати">
-    </form>
+            <div>
+                <label>Чи працюєте ви за своєю освітою :</label>
+                <br>
+                <label for="work1">Так</label>
+                <input type="radio" id="work1" name="work" value="1" required>
+                <br>
+                <label for="work2">Ні</label>
+                <input type="radio" id="work2" name="work" value="2" required>
+                <br>
+                <label for="work3">Працював/ла, але зараз ні</label>
+                <input type="radio" id="work3" name="work" value="3" required>
+            </div>
+            <input type="hidden" name="quest" value="0">
+            <input type="submit" value="Почати">
+        </form>
     </div>
 {% endblock %}
