@@ -57,7 +57,7 @@ class Quests(models.Model):
     type_quest = models.CharField(max_length=50)
     answers = models.ManyToManyField(Answers, blank=True, )
     right_answer = models.CharField(max_length=50, default='')
-    image = models.CharField(max_length=200)
+    image = models.CharField(max_length=200, blank=True, null=True)
     timer = models.BooleanField()
     timer_time = models.PositiveIntegerField(blank=True, null=True)
     number = models.PositiveIntegerField(unique=True)
