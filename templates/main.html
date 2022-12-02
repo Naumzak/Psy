@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-    Загальна інформація
+    Тестування інтелекту за моделлю Терстоуна
 {% endblock %}
 {% block text %}
-    <p>
     <h2>Інструкція</h2>
+    <p>
     Вам буде запропоновано 18 завдань, з різними типами відповідей. У деяких треба буде вписати число, в деяких обрати
     ожин чи декілька варіантів.
     У завданнях з картинками час на виконання 1 хв(буде йти таймер), після чого картинка буде зникати, але відповідь ви
@@ -14,6 +14,10 @@
     завдання треба виконувати в голові.
     Прохання проходити тест за один раз, не відходячи від комп'ютера/телефона.
     </p>
+{% endblock %}
+{% block image %}
+    <div style="margin-top: 100px">
+    <h2>Загальна інформація</h2>
     <form action="{% url "questions" %}" method="post">
         {% csrf_token %}
         <div>
@@ -49,6 +53,7 @@
             <input type="radio" id="work3" name="work" value="3" required>
         </div>
         <input type="hidden" name="quest" value="0">
-        <input type="submit">
+        <input type="submit" value="Почати">
     </form>
+    </div>
 {% endblock %}

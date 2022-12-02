@@ -19,7 +19,6 @@
             {% for answer, num in zlist %}
                 <label for="answer">{{ answer.answer }}</label>
                 <input type="checkbox" id="answer" name="answer{{ num }}" value="{{ answer.answer }}">
-                {{ num }}
                 <br>
             {% endfor %}
         {% elif quest.type_quest == 'TextFild' %}
