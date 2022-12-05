@@ -3,7 +3,7 @@ from . import models
 
 
 class QuestsAdmin(admin.ModelAdmin):
-    list_display = ('text', 'factor', 'number')
+    list_display = ('text', 'factor', 'number', 'right_answer')
 
 
 admin.site.register(models.Quests, QuestsAdmin)
